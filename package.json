@@ -9,7 +9,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier --write \"**/*.ts\"",
     "build": "tsc",
-    "protos": "pbjs -t static-module -w commonjs -o src/protos/protos.js src/protos/*.proto && pbts -o src/protos/protos.d.ts src/protos/protos.js"
+    "protos": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:src/protos --ts_out=src/protos src/protos/users.proto"
   },
   "author": "Inga Adejanova",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "grpc-tools": "^1.0.0",
+    "grpc-tools": "^1.12.4",
     "nodemon": "^3.1.0",
     "pbjs": "^0.0.14",
     "pbts": "^4.0.1",
