@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "ts-node ./src/index.ts",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier --write \"**/*.ts\"",
     "build": "tsc",
-    "protos": "protoc --plugin=protoc-gen-ts=/usr/local/bin/protoc-gen-ts --ts_out=./src/protos ./src/protos/users.proto"
+    "protos": "protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./generated --ts_proto_opt=esModuleInterop=true --grpc_out=./generated --grpc_opt=grpc_js -I ./src/protos ./src/protos/users.proto"
   },
   "author": "Inga Adejanova",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "@types/google-protobuf": "^3.15.12",
     "@types/node": "^20.11.25",
     "fastify": "^4.26.2",
-    "grpc": "^1.24.11",
     "node-pg-migrate": "^6.2.2",
     "pg": "^8.11.3",
     "protobufjs": "^7.2.6",
+    "ts-protoc-gen": "^0.15.0",
     "typescript": "^5.4.2"
   },
   "devDependencies": {
@@ -35,6 +35,7 @@
     "grpc-tools": "^1.12.4",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "ts-proto": "^1.168.0"
   }
 }
