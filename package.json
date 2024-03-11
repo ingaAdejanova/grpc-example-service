@@ -9,7 +9,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier --write \"**/*.ts\"",
     "build": "tsc",
-    "protos": "pbjs -t static-module -w commonjs -o src/protos/protos.js protos/*.proto && pbts -o src/protos/protos.d.ts src/protos/protos.js"
+    "protos": "pbjs -t static-module -w commonjs -o src/protos/protos.js src/protos/*.proto && pbts -o src/protos/protos.d.ts src/protos/protos.js"
   },
   "author": "Inga Adejanova",
   "license": "MIT",
