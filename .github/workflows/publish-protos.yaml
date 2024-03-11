@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Install protoc
+        run: |
+          sudo apt update
+          sudo apt install -y protobuf-compiler
+
       - name: Install dependencies
         run: npm install
 
